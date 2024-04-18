@@ -1,0 +1,25 @@
+
+init_config:
+  loader: core
+  use_device_id_as_hostname: true
+  profiles:
+    custom-profile:
+      definition_file: test_profile.yaml
+      
+instances:
+
+  - ip_address: 172.20.0.4
+    snmp_version: 2
+    community_string: mocksnmp
+    profile: custom-profile
+    tags:
+      - location:boston
+  
+  
+  - network_address: 172.20.0.0/24 #
+    snmp_version: 2
+    port: 161
+    community_string: mocksnmp
+    profile: custom-profile
+    tags:
+    - "auto-discovery:auto-discovered-device"
